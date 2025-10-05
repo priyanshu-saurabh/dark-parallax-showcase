@@ -1,11 +1,4 @@
-/*
 
-Tooplate 2117 Infinite Loop
-
-https://www.tooplate.com/view/2117-infinite-loop
-
-*/
-/* Global Dark Theme Override */
 body, html {
   background: #181818 !important;
   color: #e0e0e0 !important;
@@ -449,8 +442,7 @@ blockquote {
   height: 100%;
 }
 
-/* Anchor will cover the whole item by default */
-/* For some effects it will show as a button */
+
 .grid figure figcaption > a {
   z-index: 1000;
   text-indent: 200%;
@@ -479,9 +471,7 @@ blockquote {
   font-size: 68.5%;
 }
 
-/*---------------*/
-/***** Honey *****/
-/*---------------*/
+
 
 figure.effect-honey {
   background: #4a3753;
@@ -736,3 +726,4 @@ p {
     margin: 0;
   }
 }
+
