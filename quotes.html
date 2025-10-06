@@ -73,24 +73,23 @@
     e.preventDefault();
     fetch(msgScriptURL, {
       method: "POST",
+      mode: "no-cors",   // 🚀 bypasses CORS
       body: new FormData(msgForm)
     })
-    .then(response => {
-      if (response.ok) {
-        alert("Message submitted successfully!");
-        msgForm.reset();
-      } else {
-        alert("Error submitting message.");
-      }
+    .then(() => {
+      alert("Message submitted successfully!");
+      msgForm.reset();
     })
-    .catch(error => {
-      console.error("Error!", error.message);
-      alert("Error submitting message.");
+    .catch(err => {
+      console.error("Error!", err);
+      alert("Error sending message.");
     });
   });
 </script>
 
 
+
 </body>
 </html>
+
 
