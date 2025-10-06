@@ -64,29 +64,33 @@
     </form>
   </div>
 
-  <script>
-    const msgScriptURL = "https://script.google.com/macros/s/AKfycbwGXG9Nw7uSFoKbT6g5dpR3rJOyCZO6_Cwcdm4DFVssiMb6ZzLTfZQ3mWXScSfIWwff/exec";
-    const msgForm = document.getElementById("msgForm");
+ 
+<script>
+  const msgScriptURL = "https://script.google.com/macros/s/AKfycbwGXG9Nw7uSFoKbT6g5dpR3rJOyCZO6_Cwcdm4DFVssiMb6ZzLTfZQ3mWXScSfIWwff/exec";
+  const msgForm = document.getElementById("msgForm");
 
-    msgForm.addEventListener("submit", e => {
-      e.preventDefault();
-      const data = {
-        name: msgForm.name.value,
-        email: msgForm.email.value,
-        message: msgForm.message.value
-      };
-
-      fetch(msgScriptURL, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" }
-      })
-      .then(res => alert("Message submitted successfully!"))
-      .catch(err => alert("Error submitting message."));
-
-      msgForm.reset();
+  msgForm.addEventListener("submit", e => {
+    e.preventDefault();
+    fetch(msgScriptURL, {
+      method: "POST",
+      body: new FormData(msgForm)
+    })
+    .then(response => {
+      if (response.ok) {
+        alert("Message submitted successfully!");
+        msgForm.reset();
+      } else {
+        alert("Error submitting message.");
+      }
+    })
+    .catch(error => {
+      console.error("Error!", error.message);
+      alert("Error submitting message.");
     });
-  </script>
+  });
+</script>
+
 
 </body>
 </html>
+
