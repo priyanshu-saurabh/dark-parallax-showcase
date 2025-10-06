@@ -34,12 +34,16 @@
   </style>
 </head>
 <body>
+  <video autoplay muted loop playsinline id="background-quote" style="position:fixed; top:0; left:0; width:100vw; height:100vh; object-fit:cover; z-index:-1;">
+    <source src="img/background-quotes.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
   <div class="form-box">
     <h2 class="text-center mb-4">✨ Leave a Message</h2>
 
     <!-- Form -->
     <form id="msgForm" method="POST" 
-          action="https://script.google.com/macros/s/AKfycbxpAzpjgOmWQkrkOTquITNOEutEPeSVeGTe5aOSVUe5sZd6MBHP-3Oga11uTHj5o0Io/exec" 
+          action="https://script.google.com/macros/s/AKfycbwGXG9Nw7uSFoKbT6g5dpR3rJOyCZO6_Cwcdm4DFVssiMb6ZzLTfZQ3mWXScSfIWwff/exec" 
           target="hidden_iframe">
       
       <div class="mb-3">
