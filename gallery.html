@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery – Quiet Place</title>
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      background: #0e0e0e;
+      color: #f1f1f1;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #141414;
+    }
+
+    header a {
+      text-decoration: none;
+      color: #f1f1f1;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    header span {
+      font-size: 1rem;
+      letter-spacing: 1px;
+      opacity: 0.8;
+    }
+
+    /* Responsive grid */
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      background: #1a1a1a;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Force all images to same height */
+    .gallery-item img {
+      width: 100%;
+      height: 200px;       /* uniform height */
+      object-fit: cover;   /* crop without distortion */
+      display: block;
+    }
+
+    .caption {
+      padding: 0.8rem;
+      font-size: 0.9rem;
+      color: #ccc;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+      color: #aaa;
+      border-top: 1px solid #222;
+    }
+
+    /* Mobile tweak */
+    @media (max-width: 500px) {
+      .gallery-item img {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">← Back</a>
+    <span>Gallery</span>
+    <div></div>
+  </header>
+
+  <div class="gallery-container">
+    <div class="gallery-item">
+      <img src="img/gallery1.jpg" alt="Rain on Glass">
+      <div class="caption">Rain on Glass</div>
+    </div>
+    <div class="gallery-item">
+      <img src="img/gallery2.jpg" alt="Shadows in Motion">
+      <div class="caption">Shadows in Motion</div>
+    </div>
+    <div class="gallery-item">
+      <img src="img/gallery3.jpg" alt="Sea View">
+      <div class="caption">Sea View</div>
+    </div>
+    <div class="gallery-item">
+      <img src="img/gallery4.jpg" alt="Drift Between Days">
+      <div class="caption">Drift Between Days</div>
+    </div>
+  </div>
+
+  <footer>
+    ✦ Quiet Place · 2025
+  </footer>
+</body>
+</html>

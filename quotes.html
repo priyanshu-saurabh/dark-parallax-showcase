@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Share Your Message</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .form-box {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.5);
+    }
+    .form-box h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .form-control {
+      background: transparent;
+      color: white;
+      border: 1px solid #aaa;
+    }
+    .form-control::placeholder {
+      color: #ccc;
+    }
+    .btn-custom {
+      background-color: #007bff;
+      border: none;
+      width: 100%;
+    }
+    .btn-custom:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop playsinline id="background-quote" style="position:fixed; top:0; left:0; width:100vw; height:100vh; object-fit:cover; z-index:-1;">
+    <source src="img/background-quotes.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="form-box">
+    <h2>Leave a Message</h2>
+    <form id="msgForm">
+      <input type="text" name="name" placeholder="Your Name" 
+             class="form-control mb-3" required />
+      <input type="email" name="email" placeholder="Your Email" 
+             class="form-control mb-3" required />
+      <textarea name="message" rows="4" placeholder="Write your message..." 
+                class="form-control mb-3" required></textarea>
+      <button type="submit" class="btn btn-custom">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    const msgScriptURL = "https://script.google.com/macros/s/AKfycbwGXG9Nw7uSFoKbT6g5dpR3rJOyCZO6_Cwcdm4DFVssiMb6ZzLTfZQ3mWXScSfIWwff/exec";
+    const msgForm = document.getElementById("msgForm");
+
+    msgForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const data = {
+        name: msgForm.name.value,
+        email: msgForm.email.value,
+        message: msgForm.message.value
+      };
+
+      fetch(msgScriptURL, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" }
+      })
+      .then(res => alert("Message submitted successfully!"))
+      .catch(err => alert("Error submitting message."));
+
+      msgForm.reset();
+    });
+  </script>
+
+</body>
+</html>
