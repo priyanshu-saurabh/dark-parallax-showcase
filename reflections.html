@@ -85,9 +85,57 @@
     <div class="reflection">“Sometimes, the pause is the message.”</div>
   </div>
 
+
+  <!-- Anonymous Wall: Recent Messages (centered, above footer) -->
+  <div id="anonymous-wall" style="display:flex; justify-content:center; align-items:center; min-height:2.5em; font-size:1.1rem; color:#b6e0ff; opacity:0.85; margin: 2.5rem 0 0 0;">
+    <span class="wall-message"></span>
+  </div>
+
   <!-- Footer -->
   <footer>
     ✦ Quiet Place · 2025
   </footer>
+
+  <script>
+    // Anonymous Wall fetch and fade
+    const wall = document.getElementById('anonymous-wall');
+    const wallMsg = wall.querySelector('.wall-message');
+    const SHEET_API = 'https://script.google.com/macros/s/AKfycbxkkiVTU0K6aQ9M6_ffmba4AwNKI7nnKmzjMvlqzPk8iFuLAFHMWnBt2ugULt5pkdNcTg/exec';
+    const fallback = [
+      '“Sometimes, the pause is the message.”',
+      '“You are not alone in your thoughts.”',
+      '“Every whisper matters.”',
+      '“Kindness echoes in silence.”',
+      '“A quiet word can change a day.”'
+    ];
+    function fadeWall(messages) {
+      let idx = 0;
+      function showNext() {
+        wallMsg.style.opacity = 0;
+        setTimeout(() => {
+          wallMsg.textContent = messages[idx];
+          wallMsg.style.transition = 'opacity 1.2s';
+          wallMsg.style.opacity = 1;
+          idx = (idx + 1) % messages.length;
+          setTimeout(() => {
+            wallMsg.style.opacity = 0;
+            setTimeout(showNext, 1200);
+          }, 3500);
+        }, 400);
+      }
+      showNext();
+    }
+    fetch(SHEET_API)
+      .then(r => r.json())
+      .then(data => {
+        let messages = (data || []).map(m => m.message || m).filter(Boolean);
+        if (messages.length === 0) messages = fallback;
+        else messages = messages.slice(0, 3).map(m => '“' + m + '”');
+        fadeWall(messages);
+      })
+      .catch(() => {
+        fadeWall(fallback);
+      });
+  </script>
 </body>
 </html>
