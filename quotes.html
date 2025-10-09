@@ -41,22 +41,13 @@
       max-width: 600px;
       margin: 3rem auto;
       padding: 0 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
 
     form {
       background: #1a1a1a;
-      padding: 2rem 3.5rem 2rem 3.5rem;
+      padding: 2rem;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-      width: 100%;
-      max-width: 420px;
-      margin: 0 auto 2.5rem auto;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
     }
 
     label {
@@ -96,15 +87,10 @@
 
     .success-message {
       text-align: center;
-      margin: 1.5rem auto 0 auto;
-      font-size: 1rem;
+      margin-top: 1rem;
+      font-size: 0.95rem;
       color: #9be7a2;
       display: none;
-      max-width: 420px;
-      background: #232323;
-      border-radius: 6px;
-      padding: 0.7rem 1rem;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.18);
     }
 
     footer {
@@ -130,10 +116,10 @@
           action="https://script.google.com/macros/s/AKfycbyfdQQsnLGupu8zusNHPSk5eSgQkzgW_2gC_s3dNOugDYKp4mdh5i0o3E02rrV-yK_bPQ/exec" 
           method="POST" target="hidden_iframe" onsubmit="submitted=true;">
       
-      <label for="name">Name </label>
+      <label for="name">Name (optional)</label>
       <input type="text" id="name" name="name" placeholder="Anonymous">
 
-      <label for="email">Email</label>
+      <label for="email">Email (optional)</label>
       <input type="email" id="email" name="email" placeholder="you@example.com">
 
       <label for="message">Your Whisper</label>
@@ -141,16 +127,8 @@
 
       <button type="submit">Send</button>
     </form>
-  <div class="success-message" id="success-msg" role="status" aria-live="polite">
-  ✨ Whisper sent!<br>
-  Your words become part of this page. <br>
-
-  <!-- Reflection link -->
-  <a href="reflections.html" 
-     class="text-indigo-400 hover:text-indigo-500 underline block mt-2">
-    See Reflections →
-  </a>
-</div>
+    <div class="success-message" id="success-msg">✨ Whisper sent!</div>
+  </div>
 
   <iframe name="hidden_iframe" style="display:none;"></iframe>
 
@@ -161,9 +139,6 @@
 
   <!-- Script -->
   <script>
- 
-
-    // Whisper form logic
     let submitted = false;
     document.getElementById("whisper-form").addEventListener("submit", () => {
       setTimeout(() => {
@@ -177,6 +152,7 @@
   </script>
 </body>
 </html>
+
 
 
 
